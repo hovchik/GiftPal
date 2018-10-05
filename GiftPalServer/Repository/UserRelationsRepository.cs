@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GiftPalServer.DbContext;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace GiftPalServer.Repository
@@ -16,25 +17,25 @@ namespace GiftPalServer.Repository
             this.db = db;
         }
 
-        public IEnumerable<UserRelations> List { get; }
+        public IEnumerable<UserRelations> List => db.UserRelations; 
         public void Add(UserRelations entity)
         {
-            throw new NotImplementedException();
+            db.UserRelations.Add(entity);
         }
 
         public void Delete(UserRelations entity)
         {
-            throw new NotImplementedException();
+            db.UserRelations.Remove(entity);
         }
 
         public void Update(UserRelations entity)
         {
-            throw new NotImplementedException();
+            db.Entry(entity).State = EntityState.Modified;
         }
 
         public UserRelations FindById(int Id)
         {
-            throw new NotImplementedException();
+            return db.UserRelations.Find(Id);
         }
     }
 }

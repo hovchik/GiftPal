@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Models;
-
 namespace GiftPalWeb
 {
     public class Startup
@@ -34,16 +33,20 @@ namespace GiftPalWeb
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //services.iden
             services.AddAutoMapper();
             var config = new AutoMapper.MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Users, IdentityUser>();
             });
-
             var mapper = config.CreateMapper();
 
-            services.AddAuthentication();
+            services.AddSingleton(mapper);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+           
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +66,7 @@ namespace GiftPalWeb
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GiftPalServer.DbContext;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace GiftPalServer.Repository
 {
-    public class FeedbackRepository:IRepository<Feedbacks>
+    public class FeedbackRepository : IRepository<Feedbacks>
     {
         private GiftPalDbContext db;
 
@@ -16,25 +17,25 @@ namespace GiftPalServer.Repository
             this.db = db;
         }
 
-        public IEnumerable<Feedbacks> List { get; }
+        public IEnumerable<Feedbacks> List => db.Feedbacks;
         public void Add(Feedbacks entity)
         {
-            throw new NotImplementedException();
+            db.Feedbacks.Add(entity);
         }
 
         public void Delete(Feedbacks entity)
         {
-            throw new NotImplementedException();
+            db.Feedbacks.Remove(entity);
         }
 
         public void Update(Feedbacks entity)
         {
-            throw new NotImplementedException();
+            db.Entry(entity).State = EntityState.Modified;
         }
 
         public Feedbacks FindById(int Id)
         {
-            throw new NotImplementedException();
+            return db.Feedbacks.Find(Id);
         }
     }
 }

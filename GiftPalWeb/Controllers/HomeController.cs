@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GiftPalWeb.Models;
+using Microsoft.AspNetCore.Identity;
 using Models;
 
 namespace GiftPalWeb.Controllers
@@ -13,6 +14,7 @@ namespace GiftPalWeb.Controllers
     {
         public IActionResult Index()
         {
+            //IdentityUser u = new IdentityUser();
             return View();
         }
 
@@ -35,10 +37,10 @@ namespace GiftPalWeb.Controllers
             return View();
         }
 
-        public IActionResult Login()
-        {
-            return PartialView("_Login");
-        }
+        //public IActionResult Login()
+        //{
+        //    return PartialView();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

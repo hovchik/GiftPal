@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GiftPalServer.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GiftPalServer.Controllers
@@ -14,6 +15,10 @@ namespace GiftPalServer.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            UnitOfWorks a = new UnitOfWorks();
+            var users =a.Users.List;
+            a.Save();
+           
             return new string[] { "value1", "value2" };
         }
 

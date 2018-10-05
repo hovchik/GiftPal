@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GiftPalServer.DbContext;
+using GiftPalServer.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Models;
 using NJsonSchema;
 using NSwag.AspNetCore;
 
@@ -30,9 +32,10 @@ namespace GiftPalServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            var connection = @"Server=giftpal.database.windows.net;Database=GiftPal;user =giftpaladmin;password=!QAZ2wsx; Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=tcp:giftpal.database.windows.net,1433;Initial Catalog=GiftPal;Persist Security Info=False;User ID=giftpaladmin;Password=!QAZ2wsx;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             services.AddDbContext<GiftPalDbContext>(options => options.UseSqlServer(connection));
             services.AddSwagger();
+            services.AddScoped<IRepository<Users>, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +56,7 @@ namespace GiftPalServer
             });
             app.UseHttpsRedirection();
             app.UseMvc();
+
         }
     }
 }
