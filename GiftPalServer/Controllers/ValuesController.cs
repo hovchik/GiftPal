@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GiftPalServer.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 
 namespace GiftPalServer.Controllers
 {
@@ -11,15 +12,18 @@ namespace GiftPalServer.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private UnitOfWorks _unitOfWorks;
+
+        public ValuesController(UnitOfWorks unitOfWorks)
+        {
+            _unitOfWorks = unitOfWorks;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IEnumerable<Users> Get()
         {
-            UnitOfWorks a = new UnitOfWorks();
-            var users =a.Users.List;
-            a.Save();
-           
-            return new string[] { "value1", "value2" };
+            return _unitOfWorks.Users.List.AsEnumerable();
         }
 
         // GET api/values/5

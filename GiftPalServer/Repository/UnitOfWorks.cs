@@ -6,7 +6,7 @@ using GiftPalServer.DbContext;
 
 namespace GiftPalServer.Repository
 {
-    public class UnitOfWorks : IDisposable
+    public class UnitOfWorks : IDisposable, IUnitOfWork
     {
         private GiftPalDbContext db = new GiftPalDbContext();
 
