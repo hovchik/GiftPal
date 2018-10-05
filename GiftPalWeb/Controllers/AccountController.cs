@@ -15,10 +15,19 @@ namespace GiftPalWeb.Controllers
 {
     public class AccountController : Controller
     {
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int Id)
         {
+            UsersModel user = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:5261/");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var responseMessage = await client.GetAsync("api/CreateUser/" + Id);
 
-            return View();
+                //user = responseMessage.;
+            }
+            
+            return View(user);
         }
         public async Task<IActionResult> Login(bool isLogin)
         {
