@@ -38,14 +38,14 @@ namespace GiftPalServer.DbContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Users>(entity =>
-            {
-                entity.Property(e => e.Email ).IsRequired();
-                entity.Property(e => e.FirstName).IsRequired();
-                entity.Property(e => e.LastName).IsRequired();
-                entity.Property(e => e.BirthDay).IsRequired();
-                entity.HasKey(e => e.ID);
-            });
+            //modelBuilder.Entity<Users>(entity =>
+            //{
+            //    entity.Property(e => e.Email ).IsRequired();
+            //    entity.Property(e => e.FirstName).IsRequired();
+            //    entity.Property(e => e.LastName).IsRequired();
+            //    entity.Property(e => e.BirthDay).IsRequired();
+            //    entity.HasKey(e => e.ID);
+            //});
 
             //modelBuilder.Entity<Post>(entity =>
             //{
