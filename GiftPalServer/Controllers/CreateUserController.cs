@@ -21,17 +21,22 @@ namespace GiftPalServer.Controllers
         }
 
         [HttpPost]
-        public async Task<Users> CreateUser([FromBody] Users _user)
+        public async Task<int> CreateUser([FromBody] Users _user)
         {
+            if (_unitOfWorks.Users.List.Any(mail => mail.Email.ToLower() == _user.Email.ToLower()))
+            {
+                return 0;
+            }
             await _unitOfWorks.Users.Add(_user);
-            await _unitOfWorks.Save();
-            return _unitOfWorks.Users.List.FirstOrDefault(id => id.Email == _user.Email);
+            _unitOfWorks.Save().GetAwaiter().GetResult();
+            return _unitOfWorks.Users.List.FirstOrDefault(id => id.Email == _user.Email).Id;
+            // return  _unitOfWorks.Users.List.FirstOrDefault(id => id.Email == _user.Email);
         }
 
         [HttpGet("Id")]
-        public async Task<Users> Get(int Id)
+        public Users Get(int Id)
         {
-            return await _unitOfWorks.Users.FindById(Id);
+            return _unitOfWorks.Users.List.FirstOrDefault(x => x.Id == Id);
         }
     }
 }
