@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public class Users
+    public class Users //: IdentityUser
     {
         public int ID { get; set; }
         public string FirstName { get; set; }

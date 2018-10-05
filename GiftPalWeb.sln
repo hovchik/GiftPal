@@ -3,13 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftPalWeb", "GiftPalWeb\GiftPalWeb.csproj", "{B48B7950-B942-41EE-B8B1-26F801A340A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiftPalWeb", "GiftPalWeb\GiftPalWeb.csproj", "{B48B7950-B942-41EE-B8B1-26F801A340A3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{40D43F9B-7AF9-408F-949B-E89E138E6E6D} = {40D43F9B-7AF9-408F-949B-E89E138E6E6D}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftPalServer", "GiftPalServer\GiftPalServer.csproj", "{D3B62302-C70B-46B8-B7BA-C2B9799F6966}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiftPalServer", "GiftPalServer\GiftPalServer.csproj", "{D3B62302-C70B-46B8-B7BA-C2B9799F6966}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{53010A38-0ED1-48A7-B9DC-37B1FF700A46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpers", "Helpers\Helpers.csproj", "{53010A38-0ED1-48A7-B9DC-37B1FF700A46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{40D43F9B-7AF9-408F-949B-E89E138E6E6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{40D43F9B-7AF9-408F-949B-E89E138E6E6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
