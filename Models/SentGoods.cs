@@ -9,9 +9,9 @@ namespace Models
     public class SentGoods
     {
         public int Id { get; set; }
-        [ForeignKey("Gifts")]
+        //[ForeignKey("Gifts")]
         public int GiftId { get; set; }
-        public Gifts Gifts { get; set; }
+        public Gifts Gift { get; set; }
 
         public bool IsSent { get; set; }
 

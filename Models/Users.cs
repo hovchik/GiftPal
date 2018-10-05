@@ -19,10 +19,10 @@ namespace Models
         public DateTime Updated { get; set; }
         public bool Deleted { get; set; }
 
-        public ICollection<UserRelations> UserRelations { get; set; }
-        public ICollection<UserRelations> UserRelations2 { get; set; }
-        public ICollection<ShippingAddress> ShippingAddress { get; set; }
-        public ICollection<Feedbacks> Feedbacks { get; set; }
+        //public virtual ICollection<UserRelations> UserRelations { get; set; }
+        //public virtual ICollection<UserRelations> UserRelations2 { get; set; }
+        public virtual ICollection<ShippingAddress> ShippingAddress { get; set; }
+        public virtual ICollection<Feedbacks> Feedbacks { get; set; }
 
     }
 }

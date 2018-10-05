@@ -9,7 +9,7 @@ namespace Models
     public class ShippingAddress
     {
         public int Id { get; set; }
-        [ForeignKey("User")]
+        //[ForeignKey("User")]
         public int UserId { get; set; }
         [Required]
         public string AddressLine1 { get; set; }

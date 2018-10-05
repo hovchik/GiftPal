@@ -8,7 +8,7 @@ namespace Models
     public class ReceivedGoods
     {
         public int Id { get; set; }
-        [ForeignKey("Gifts")]
+        //[ForeignKey("Gifts")]
         public int GiftId { get; set; }
         public Gifts Gifts { get; set; }
         public bool IsReceived { get; set; }

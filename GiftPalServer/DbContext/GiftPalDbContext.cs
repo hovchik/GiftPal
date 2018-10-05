@@ -38,21 +38,7 @@ namespace GiftPalServer.DbContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Users>(entity =>
-            //{
-            //    entity.Property(e => e.Email ).IsRequired();
-            //    entity.Property(e => e.FirstName).IsRequired();
-            //    entity.Property(e => e.LastName).IsRequired();
-            //    entity.Property(e => e.BirthDay).IsRequired();
-            //    entity.HasKey(e => e.ID);
-            //});
-
-            //modelBuilder.Entity<Post>(entity =>
-            //{
-            //    entity.HasOne(d => d.Blog)
-            //        .WithMany(p => p.Post)
-            //        .HasForeignKey(d => d.BlogId);
-            //});
+           base.OnModelCreating(modelBuilder);
         }
 
         public virtual DbSet<Gifts> Gifts { get; set; }

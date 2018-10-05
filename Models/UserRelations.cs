@@ -9,12 +9,19 @@ namespace Models
     public class UserRelations
     {
         public int Id { get; set; }
-        [Required, ForeignKey("Source")]
-        public int SourceID { get; set; }
-        [Required, ForeignKey("Destination")]
-        public int DestinationID { get; set; }
-        [Required, ForeignKey("Good")]
-        public int GoodID { get; set; }
+
+        [Required]
+       // [ForeignKey("Source")]
+        public int SourceId { get; set; }
+
+        [Required]
+        //[ForeignKey("Destination")]
+        public int DestinationId { get; set; }
+
+        [Required]
+        //[ForeignKey("Good")]
+        public int GoodId { get; set; }
+
         public bool IsSent { get; set; }
         public int Rating { get; set; }
         public DateTime Created { get; set; }

@@ -9,9 +9,9 @@ namespace Models
     public class Feedbacks
     {
         public int Id { get; set; }
-        [ForeignKey("Users")]
+        //[ForeignKey("Users")]
         public int UserId { get; set; }
-        public Users Users { get; set; }
+        public Users User { get; set; }
         [Required]
         public string Feedback { get; set; }
         public bool Deleted { get; set; }
