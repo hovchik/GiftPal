@@ -1,0 +1,3 @@
+﻿CREATE USER [usr]
+  FOR LOGIN [usr]
+GO
