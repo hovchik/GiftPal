@@ -34,9 +34,9 @@ namespace GiftPalServer.Controllers
         }
 
         [HttpGet("Id")]
-        public Users Get(string Id)
+        public Users Get(int Id)
         {
-            return _unitOfWorks.Users.List.FirstOrDefault(x => x.Email.ToLower() == Id.ToLower());
+            return _unitOfWorks.Users.List.FirstOrDefault(x => x.Id == Id);
         }
     }
 }
