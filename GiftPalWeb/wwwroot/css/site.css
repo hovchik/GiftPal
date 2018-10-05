@@ -1,8 +1,9 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
+    font-family: 'K2D', sans-serif;
 }
 
 /* Wrapping element */
@@ -34,4 +35,154 @@ body {
     .carousel-caption {
         display: none;
     }
+}
+
+.navbar-inverse {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color:#fff;
+        letter-spacing: 1px;
+        font-size: 15px;
+    }
+.navbar{
+    min-height:90px;
+}
+.navbar-nav{
+    padding-top:20px;
+}
+.bg-white.navbar-inverse .navbar-nav > li > a {
+    color: rgba(171, 5, 53, 1);
+}
+
+#videoDiv, #myVideo {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    display: block;
+    position: relative;
+}
+
+#videoMessage {
+    padding: 0.4em;
+    text-shadow: 2px 2px 2px #000000;
+    color: white;
+    z-index: 99
+}
+
+#videoMessageBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.2)
+}
+
+#videoMessage {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+}
+
+.pt-5 {
+    padding-top: 5.5vw;
+}
+
+.p-5 {
+    padding: 5.5vw;
+}
+
+.mlN-40 {
+    margin-left: -40px;
+}
+
+.mtN-40 {
+    margin-top: -40px;
+}
+
+.ml-0 {
+    margin-left: 0px;
+}
+
+.pr-0 {
+    padding-right: 0px;
+}
+
+.bg-1 {
+    background-color: #3080ba;
+    color: #fff;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+.bg-2 {
+    background-color: rgba(171, 5, 53, 1);
+    color: #fff;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+#mainNav.bg-white {
+    -webkit-animation: fadeInDownPerso;
+    animation: fadeInDownPerso;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDownPerso {
+    from {
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0)
+    }
+
+    to {
+        opacity: 1;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
+}
+
+@keyframes fadeInDownPerso {
+    from {
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0)
+    }
+
+    to {
+        opacity: 1;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
+.bg-white {
+    background-color: white;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 0px 0 rgba(0,0,0,.1);
 }
