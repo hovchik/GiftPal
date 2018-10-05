@@ -36,9 +36,11 @@ namespace GiftPalServer.Migrations
 
                     b.Property<int>("UserId");
 
+                    b.Property<string>("UserId1");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Feedbacks");
                 });
@@ -74,13 +76,15 @@ namespace GiftPalServer.Migrations
 
                     b.Property<int>("UserId");
 
+                    b.Property<string>("UserId1");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ReceivedGoodsId");
 
                     b.HasIndex("SentGoodsId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Goods");
                 });
@@ -163,12 +167,14 @@ namespace GiftPalServer.Migrations
 
                     b.Property<int>("UserId");
 
+                    b.Property<string>("UserId1");
+
                     b.Property<string>("Zip")
                         .IsRequired();
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("ShippingAddresses");
                 });
@@ -185,6 +191,8 @@ namespace GiftPalServer.Migrations
 
                     b.Property<int>("DestinationId");
 
+                    b.Property<string>("DestinationId1");
+
                     b.Property<int>("GoodId");
 
                     b.Property<bool>("IsSent");
@@ -193,33 +201,39 @@ namespace GiftPalServer.Migrations
 
                     b.Property<int>("SourceId");
 
+                    b.Property<string>("SourceId1");
+
                     b.Property<DateTime>("Updated");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DestinationId");
+                    b.HasIndex("DestinationId1");
 
                     b.HasIndex("GoodId");
 
-                    b.HasIndex("SourceId");
+                    b.HasIndex("SourceId1");
 
                     b.ToTable("UserRelations");
                 });
 
             modelBuilder.Entity("Models.Users", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AccessFailedCount");
 
                     b.Property<DateTime>("BirthDay");
+
+                    b.Property<string>("ConcurrencyStamp");
 
                     b.Property<DateTime>("Created");
 
                     b.Property<bool>("Deleted");
 
-                    b.Property<string>("Email")
-                        .IsRequired();
+                    b.Property<string>("Email");
+
+                    b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName")
                         .IsRequired();
@@ -227,7 +241,27 @@ namespace GiftPalServer.Migrations
                     b.Property<string>("LastName")
                         .IsRequired();
 
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<bool>("TwoFactorEnabled");
+
                     b.Property<DateTime>("Updated");
+
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
@@ -238,8 +272,7 @@ namespace GiftPalServer.Migrations
                 {
                     b.HasOne("Models.Users", "User")
                         .WithMany("Feedbacks")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId1");
                 });
 
             modelBuilder.Entity("Models.Goods", b =>
@@ -254,8 +287,7 @@ namespace GiftPalServer.Migrations
 
                     b.HasOne("Models.Users", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId1");
                 });
 
             modelBuilder.Entity("Models.ReceivedGoods", b =>
@@ -277,16 +309,14 @@ namespace GiftPalServer.Migrations
                 {
                     b.HasOne("Models.Users", "User")
                         .WithMany("ShippingAddress")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId1");
                 });
 
             modelBuilder.Entity("Models.UserRelations", b =>
                 {
                     b.HasOne("Models.Users", "Destination")
                         .WithMany()
-                        .HasForeignKey("DestinationId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DestinationId1");
 
                     b.HasOne("Models.Goods", "Good")
                         .WithMany("UserRelationses")
@@ -295,8 +325,7 @@ namespace GiftPalServer.Migrations
 
                     b.HasOne("Models.Users", "Source")
                         .WithMany()
-                        .HasForeignKey("SourceId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("SourceId1");
                 });
 #pragma warning restore 612, 618
         }
