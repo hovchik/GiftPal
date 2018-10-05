@@ -13,9 +13,9 @@ namespace GiftPalServer.Controllers
     [ApiController]
     public class CreateUserController : ControllerBase
     {
-        private UnitOfWorks _unitOfWorks;
+        private IUnitOfWork _unitOfWorks;
 
-        public CreateUserController(UnitOfWorks unitOfWorks)
+        public CreateUserController(IUnitOfWork unitOfWorks)
         {
             _unitOfWorks = unitOfWorks;
         }

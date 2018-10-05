@@ -13,9 +13,9 @@ namespace GiftPalServer.Controllers
     [ApiController]
     public class SendGiftController : ControllerBase
     {
-        private UnitOfWorks _unitOfWorks;
+        private IUnitOfWork _unitOfWorks;
         private RandomGiftChooser _chooser;
-        public SendGiftController(UnitOfWorks unitOfWorks)
+        public SendGiftController(IUnitOfWork unitOfWorks)
         {
             _unitOfWorks = unitOfWorks;
             _chooser = new RandomGiftChooser(unitOfWorks);

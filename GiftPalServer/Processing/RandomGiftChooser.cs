@@ -10,9 +10,9 @@ namespace GiftPalServer.Processing
 {
     public class RandomGiftChooser
     {
-        private UnitOfWorks _unitOfWorks;
+        private IUnitOfWork _unitOfWorks;
 
-        public RandomGiftChooser(UnitOfWorks unitOfWorks)
+        public RandomGiftChooser(IUnitOfWork unitOfWorks)
         {
             _unitOfWorks = unitOfWorks;
         }

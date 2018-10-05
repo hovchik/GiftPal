@@ -35,7 +35,8 @@ namespace GiftPalServer
             var connection = @"Server=tcp:giftpal.database.windows.net,1433;Initial Catalog=GiftPal;Persist Security Info=False;User ID=giftpaladmin;Password=!QAZ2wsx;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             services.AddDbContext<GiftPalDbContext>(options => options.UseSqlServer(connection));
             services.AddSwagger();
-            services.AddScoped<IUnitOfWork, UnitOfWorks>();
+            services.AddTransient<IUnitOfWork, UnitOfWorks>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

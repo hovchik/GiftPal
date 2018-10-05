@@ -12,9 +12,9 @@ namespace GiftPalServer.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private UnitOfWorks _unitOfWorks;
+        private IUnitOfWork _unitOfWorks;
 
-        public ValuesController(UnitOfWorks unitOfWorks)
+        public ValuesController(IUnitOfWork unitOfWorks)
         {
             _unitOfWorks = unitOfWorks;
         }
@@ -23,7 +23,7 @@ namespace GiftPalServer.Controllers
         [HttpGet]
         public IEnumerable<Users> Get()
         {
-            return _unitOfWorks.Users.List.AsEnumerable();
+            return _unitOfWorks.Users.List;
         }
 
         // GET api/values/5
