@@ -26,5 +26,11 @@ namespace GiftPalServer.Controllers
             await _unitOfWorks.Users.Add(_user);
             await _unitOfWorks.Save();
         }
+
+        [HttpGet("Id")]
+        public async Task<Users> Get(int Id)
+        {
+            return await _unitOfWorks.Users.FindById(Id);
+        }
     }
 }
