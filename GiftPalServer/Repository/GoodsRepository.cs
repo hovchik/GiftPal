@@ -18,9 +18,9 @@ namespace GiftPalServer.Repository
         }
 
         public IEnumerable<Goods> List => db.Goods;
-        public void Add(Goods entity)
+        public async Task Add(Goods entity)
         {
-            db.Goods.Add(entity);
+           await db.Goods.AddAsync(entity);
         }
 
         public void Delete(Goods entity)
@@ -33,9 +33,9 @@ namespace GiftPalServer.Repository
             db.Entry(entity).State = EntityState.Modified;
         }
 
-        public Goods FindById(int Id)
+        public async Task<Goods> FindById(int Id)
         {
-            return db.Goods.Find(Id);
+            return await db.Goods.FindAsync(Id);
         }
     }
 }

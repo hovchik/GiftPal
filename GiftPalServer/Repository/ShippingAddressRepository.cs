@@ -18,7 +18,7 @@ namespace GiftPalServer.Repository
         }
 
         public IEnumerable<ShippingAddress> List => db.ShippingAddresses;
-        public void Add(ShippingAddress entity)
+        public async Task Add(ShippingAddress entity)
         {
             db.ShippingAddresses.Add(entity);
         }
@@ -33,9 +33,9 @@ namespace GiftPalServer.Repository
             db.Entry(entity).State = EntityState.Modified;
         }
 
-        public ShippingAddress FindById(int Id)
+        public async Task<ShippingAddress> FindById(int Id)
         {
-            return db.ShippingAddresses.Find(Id);
+            return await db.ShippingAddresses.FindAsync(Id);
         }
     }
 }
