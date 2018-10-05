@@ -17,7 +17,7 @@ namespace GiftPalServer.Processing
             _unitOfWorks = unitOfWorks;
         }
 
-        public async Task GetRendomGift(decimal price, string userId)
+        public async Task GetRendomGift(decimal price, int userId)
         {
             var actualPrice = price - price * 5 / 100;
             var someGift = (from gift in _unitOfWorks.Gift.List
@@ -37,8 +37,8 @@ namespace GiftPalServer.Processing
             {
                 Created = DateTime.Now,
                 Deleted = false,
-                DestinationId = int.Parse(sendTo.Id),
-                SourceId = int.Parse(userId),
+                DestinationId = sendTo.Id,
+                SourceId = userId,
                 IsSent = true
             };
             await _unitOfWorks.UserRelations.Add(_relation);

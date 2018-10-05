@@ -5,9 +5,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
-    public class Users : IdentityUser
+    public class Users //: IdentityUser
     {
-        //public int Id { get; set; }
+
+        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -15,7 +16,9 @@ namespace Models
         [Required]
         public DateTime BirthDay { get; set; }
         [Required]
-        //public string Email { get; set; }
+        public string Email { get; set; }
+        [Required]
+        public string Password { get; set; }
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
         public bool Deleted { get; set; }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GiftPalServer.Migrations
 {
-    public partial class initialCommit : Migration
+    public partial class migrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,27 +28,17 @@ namespace GiftPalServer.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(nullable: true),
-                    NormalizedUserName = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    NormalizedEmail = table.Column<string>(nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
                     BirthDay = table.Column<DateTime>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
                     Updated = table.Column<DateTime>(nullable: false),
-                    Deleted = table.Column<bool>(nullable: false)
+                    Deleted = table.Column<bool>(nullable: false),
+                    Rating = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -100,7 +90,7 @@ namespace GiftPalServer.Migrations
                         column: x => x.GiftId,
                         principalTable: "Gifts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -110,7 +100,6 @@ namespace GiftPalServer.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<int>(nullable: false),
-                    UserId1 = table.Column<string>(nullable: true),
                     Feedback = table.Column<string>(nullable: false),
                     Deleted = table.Column<bool>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
@@ -120,11 +109,11 @@ namespace GiftPalServer.Migrations
                 {
                     table.PrimaryKey("PK_Feedbacks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Feedbacks_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Feedbacks_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -142,18 +131,17 @@ namespace GiftPalServer.Migrations
                     Country = table.Column<string>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
                     Updated = table.Column<DateTime>(nullable: false),
-                    Deleted = table.Column<bool>(nullable: false),
-                    UserId1 = table.Column<string>(nullable: true)
+                    Deleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ShippingAddresses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ShippingAddresses_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_ShippingAddresses_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -164,8 +152,7 @@ namespace GiftPalServer.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SentGoodsId = table.Column<int>(nullable: true),
                     ReceivedGoodsId = table.Column<int>(nullable: true),
-                    UserId = table.Column<int>(nullable: false),
-                    UserId1 = table.Column<string>(nullable: true)
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,11 +170,11 @@ namespace GiftPalServer.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Goods_Users_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Goods_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -200,40 +187,37 @@ namespace GiftPalServer.Migrations
                     DestinationId = table.Column<int>(nullable: false),
                     GoodId = table.Column<int>(nullable: false),
                     IsSent = table.Column<bool>(nullable: false),
-                    Rating = table.Column<int>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
                     Updated = table.Column<DateTime>(nullable: false),
-                    Deleted = table.Column<bool>(nullable: false),
-                    SourceId1 = table.Column<string>(nullable: true),
-                    DestinationId1 = table.Column<string>(nullable: true)
+                    Deleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserRelations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserRelations_Users_DestinationId1",
-                        column: x => x.DestinationId1,
+                        name: "FK_UserRelations_Users_DestinationId",
+                        column: x => x.DestinationId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_UserRelations_Goods_GoodId",
                         column: x => x.GoodId,
                         principalTable: "Goods",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_UserRelations_Users_SourceId1",
-                        column: x => x.SourceId1,
+                        name: "FK_UserRelations_Users_SourceId",
+                        column: x => x.SourceId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Feedbacks_UserId1",
+                name: "IX_Feedbacks_UserId",
                 table: "Feedbacks",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Goods_ReceivedGoodsId",
@@ -246,9 +230,9 @@ namespace GiftPalServer.Migrations
                 column: "SentGoodsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Goods_UserId1",
+                name: "IX_Goods_UserId",
                 table: "Goods",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ReceivedGoods_GiftsId",
@@ -261,14 +245,14 @@ namespace GiftPalServer.Migrations
                 column: "GiftId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShippingAddresses_UserId1",
+                name: "IX_ShippingAddresses_UserId",
                 table: "ShippingAddresses",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserRelations_DestinationId1",
+                name: "IX_UserRelations_DestinationId",
                 table: "UserRelations",
-                column: "DestinationId1");
+                column: "DestinationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRelations_GoodId",
@@ -276,9 +260,9 @@ namespace GiftPalServer.Migrations
                 column: "GoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserRelations_SourceId1",
+                name: "IX_UserRelations_SourceId",
                 table: "UserRelations",
-                column: "SourceId1");
+                column: "SourceId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

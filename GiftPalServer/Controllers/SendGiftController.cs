@@ -40,7 +40,7 @@ namespace GiftPalServer.Controllers
         [HttpPost]
         public async Task Post([FromBody] decimal money, int userid)
         {
-            await _chooser.GetRendomGift(money, userid.ToString());
+            await _chooser.GetRendomGift(money, userid);
             await _unitOfWorks.Save();
 
         }
