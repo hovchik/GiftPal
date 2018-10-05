@@ -186,3 +186,31 @@ body {
     background-color: white;
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 0px 0 rgba(0,0,0,.1);
 }
+#regBtn, #loginBtn {
+    border-bottom: 3px solid rgba(171, 5, 53, 1);
+}
+
+    #regBtn.inactive-tab, #loginBtn.inactive-tab {
+        border-bottom: 3px solid rgb(128, 128, 128);
+    }
+
+.modal-header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.modal-title{
+    padding-bottom:10px;
+}
+
+.btn-login {
+    background-color: rgba(171, 5, 53, 1);
+    border: 1px solid rgba(171, 5, 53, 1);
+    padding: 10px 30px;
+    color:#fff;
+}
+.btn-login:hover {
+    background-color: rgba(171, 5, 53, 1);
+    border: 1px solid rgba(171, 5, 53, 1);
+    padding: 10px 30px;
+    color: #fff;
+}
