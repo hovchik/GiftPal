@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Newtonsoft.Json;
 
 namespace GiftPalWeb.Controllers
 {
@@ -43,8 +45,6 @@ namespace GiftPalWeb.Controllers
                     client.BaseAddress = new Uri("http://localhost:5261/");
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     var createdUserReq = await client.PostAsJsonAsync("api/CreateUser", user);
-
-                   var userModel =await createdUserReq.Content.ReadAsAsync<Users>();
                 }
                 return RedirectToAction("Index");
             }
