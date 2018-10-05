@@ -29,7 +29,6 @@ namespace GiftPalServer.Repository
 
             }
         }
-
         public GoodsRepository Goods
         {
             get
@@ -96,7 +95,11 @@ namespace GiftPalServer.Repository
             }
         }
 
-        
+        public void Save()
+        {
+            db.SaveChanges();
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 

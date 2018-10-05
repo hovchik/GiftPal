@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Models;
 
 namespace GiftPalServer.DbContext
@@ -17,6 +19,21 @@ namespace GiftPalServer.DbContext
             : base(options)
         {
 
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+
+            if (!optionsBuilder.IsConfigured)
+            {
+                IConfigurationRoot configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+                var connection = @"Server=tcp:giftpal.database.windows.net,1433;Initial Catalog=GiftPal;Persist Security Info=False;User ID=giftpaladmin;Password=!QAZ2wsx;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+                optionsBuilder.UseSqlServer(connection);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

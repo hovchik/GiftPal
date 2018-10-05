@@ -35,14 +35,18 @@ namespace GiftPalWeb
 
             //services.iden
             services.AddAutoMapper();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
             var config = new AutoMapper.MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Users, IdentityUser>();
             });
-
             var mapper = config.CreateMapper();
+
+            services.AddSingleton(mapper);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+           
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
