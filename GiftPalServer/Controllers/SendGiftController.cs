@@ -18,7 +18,7 @@ namespace GiftPalServer.Controllers
         public SendGiftController(UnitOfWorks unitOfWorks)
         {
             _unitOfWorks = unitOfWorks;
-            _chooser= new RandomGiftChooser(unitOfWorks);
+            _chooser = new RandomGiftChooser(unitOfWorks);
         }
 
         // GET: api/SendGift
@@ -38,9 +38,10 @@ namespace GiftPalServer.Controllers
 
         // POST: api/SendGift
         [HttpPost]
-        public async Task Post([FromBody] decimal money,int userid)
+        public async Task Post([FromBody] decimal money, int userid)
         {
             await _chooser.GetRendomGift(money, userid.ToString());
+            await _unitOfWorks.Save();
 
         }
 
