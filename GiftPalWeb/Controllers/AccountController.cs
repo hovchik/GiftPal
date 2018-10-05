@@ -44,7 +44,7 @@ namespace GiftPalWeb.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
-                    PasswordHash = model.Password,
+                    Password = model.Password,
                     BirthDay = DateTime.Now.AddYears(-20),
                 };
                 using (var client = new HttpClient())
