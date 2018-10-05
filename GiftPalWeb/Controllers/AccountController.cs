@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
 using GiftPalWeb.Models;
@@ -36,6 +38,12 @@ namespace GiftPalWeb.Controllers
                     PasswordHash = model.Password,
                     BirthDay = DateTime.Now.AddYears(-20),
                 };
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:5261/");
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    await client.PostAsJsonAsync("api/CreateUser", user);
+                }
                 return RedirectToAction("Index");
             }
             return View(model);
