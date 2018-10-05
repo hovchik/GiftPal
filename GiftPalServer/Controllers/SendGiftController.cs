@@ -38,7 +38,7 @@ namespace GiftPalServer.Controllers
 
         // POST: api/SendGift
         [HttpPost]
-        public async Task Post([FromBody] decimal money, int userid)
+        public async Task Post(decimal money, int userid)
         {
             await _chooser.GetRendomGift(money, userid);
             await _unitOfWorks.Save();

@@ -33,7 +33,7 @@ namespace GiftPalServer.Controllers
             // return  _unitOfWorks.Users.List.FirstOrDefault(id => id.Email == _user.Email);
         }
 
-        [HttpGet("Id")]
+        [HttpGet("{Id}")]
         public Users Get(int Id)
         {
             return _unitOfWorks.Users.List.FirstOrDefault(x => x.Id == Id);

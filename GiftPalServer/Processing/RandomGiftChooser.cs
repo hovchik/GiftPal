@@ -39,7 +39,15 @@ namespace GiftPalServer.Processing
                 Deleted = false,
                 DestinationId = sendTo.Id,
                 SourceId = userId,
-                IsSent = true
+                IsSent = true,
+                Good = new Goods
+                {
+                    SentGoods = new SentGoods
+                    {
+                        Gift = choosenGift,
+                        IsSent = true
+                    }
+                }
             };
             await _unitOfWorks.UserRelations.Add(_relation);
 
