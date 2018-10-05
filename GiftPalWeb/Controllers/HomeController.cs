@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GiftPalWeb.Models;
+using Models;
 
 namespace GiftPalWeb.Controllers
 {
@@ -36,7 +37,7 @@ namespace GiftPalWeb.Controllers
 
         public IActionResult Login()
         {
-            return PartialView();
+            return PartialView("_Login");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
