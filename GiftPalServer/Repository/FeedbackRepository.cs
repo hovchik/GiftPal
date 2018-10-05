@@ -17,10 +17,11 @@ namespace GiftPalServer.Repository
             this.db = db;
         }
 
-        public IEnumerable<Feedbacks> List => db.Feedbacks;
-        public void Add(Feedbacks entity)
+        public IEnumerable<Feedbacks> List => db.Feedbacks.AsEnumerable();
+
+        public async Task Add(Feedbacks entity)
         {
-            db.Feedbacks.Add(entity);
+            await db.Feedbacks.AddAsync(entity);
         }
 
         public void Delete(Feedbacks entity)
@@ -33,9 +34,9 @@ namespace GiftPalServer.Repository
             db.Entry(entity).State = EntityState.Modified;
         }
 
-        public Feedbacks FindById(int Id)
+        public async Task<Feedbacks> FindById(int Id)
         {
-            return db.Feedbacks.Find(Id);
+            return await db.Feedbacks.FindAsync(Id);
         }
     }
 }

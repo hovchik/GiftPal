@@ -8,9 +8,9 @@ namespace GiftPalServer.Repository
     public interface IRepository<T>
     {
         IEnumerable<T> List { get; }
-        void Add(T entity);
+        Task Add(T entity);
         void Delete(T entity);
         void Update(T entity);
-        T FindById(int Id);
+        Task<T> FindById(int Id);
     }
 }

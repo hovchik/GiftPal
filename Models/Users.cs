@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
-    public class Users
+    public class Users : IdentityUser
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -14,7 +15,7 @@ namespace Models
         [Required]
         public DateTime BirthDay { get; set; }
         [Required]
-        public string Email { get; set; }
+        //public string Email { get; set; }
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
         public bool Deleted { get; set; }

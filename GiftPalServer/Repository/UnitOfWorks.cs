@@ -6,7 +6,7 @@ using GiftPalServer.DbContext;
 
 namespace GiftPalServer.Repository
 {
-    public class UnitOfWorks:IDisposable
+    public class UnitOfWorks : IDisposable
     {
         private GiftPalDbContext db = new GiftPalDbContext();
 
@@ -95,9 +95,9 @@ namespace GiftPalServer.Repository
             }
         }
 
-        public void Save()
+        public async Task Save()
         {
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
 
         #region IDisposable Support
