@@ -45,6 +45,7 @@ namespace GiftPalWeb.Controllers
                     client.BaseAddress = new Uri("http://localhost:5261/");
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     var createdUserReq = await client.PostAsJsonAsync("api/CreateUser", user);
+                    var result = await createdUserReq.Content.ReadAsAsync<int>();
                 }
                 return RedirectToAction("Index");
             }

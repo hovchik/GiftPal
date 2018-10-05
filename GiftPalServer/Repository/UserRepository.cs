@@ -16,7 +16,8 @@ namespace GiftPalServer.Repository
         {
             this.db = db;
         }
-        public IEnumerable<Users> List { get; }
+
+        public IEnumerable<Users> List => db.Users.AsEnumerable();
         public async Task Add(Users entity)
         {
             await db.Users.AddAsync(entity);

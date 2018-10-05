@@ -21,10 +21,15 @@ namespace GiftPalServer.Controllers
         }
 
         [HttpPost]
-        public async Task CreateUser([FromBody] Users _user)
+        public async Task<int> CreateUser([FromBody] Users _user)
         {
+            if (_unitOfWorks.Users.List.Any(mail => mail.Email.ToLower() == _user.Email.ToLower()))
+            {
+                return 0;
+            }
             await _unitOfWorks.Users.Add(_user);
-            await _unitOfWorks.Save();
+            _unitOfWorks.Save().GetAwaiter().GetResult();
+            return _unitOfWorks.Users.List.FirstOrDefault(id => id.Email == _user.Email).Id;
             // return  _unitOfWorks.Users.List.FirstOrDefault(id => id.Email == _user.Email);
         }
 
