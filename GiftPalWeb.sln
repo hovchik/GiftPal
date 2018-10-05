@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftPalServer", "GiftPalSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{53010A38-0ED1-48A7-B9DC-37B1FF700A46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{40D43F9B-7AF9-408F-949B-E89E138E6E6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{53010A38-0ED1-48A7-B9DC-37B1FF700A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53010A38-0ED1-48A7-B9DC-37B1FF700A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53010A38-0ED1-48A7-B9DC-37B1FF700A46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D43F9B-7AF9-408F-949B-E89E138E6E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D43F9B-7AF9-408F-949B-E89E138E6E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D43F9B-7AF9-408F-949B-E89E138E6E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D43F9B-7AF9-408F-949B-E89E138E6E6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
