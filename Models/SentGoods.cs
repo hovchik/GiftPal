@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
     public class SentGoods
     {
         public int Id { get; set; }
+        [ForeignKey("Gifts")]
         public int GiftId { get; set; }
         public Gifts Gifts { get; set; }
 

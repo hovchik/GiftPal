@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Models
@@ -7,6 +8,7 @@ namespace Models
     public class ReceivedGoods
     {
         public int Id { get; set; }
+        [ForeignKey("Gifts")]
         public int GiftId { get; set; }
         public Gifts Gifts { get; set; }
         public bool IsReceived { get; set; }

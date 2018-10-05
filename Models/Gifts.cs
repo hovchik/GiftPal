@@ -13,5 +13,7 @@ namespace Models
 
         public string ImageUrl { get; set; }
 
+        public ICollection<ReceivedGoods> ReceivedGoods { get; set; }
+        public ICollection<SentGoods> SentGoods { get; set; }
     }
 }
