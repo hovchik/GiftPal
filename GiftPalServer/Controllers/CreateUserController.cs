@@ -13,16 +13,18 @@ namespace GiftPalServer.Controllers
     [ApiController]
     public class CreateUserController : ControllerBase
     {
-        private UnitOfWorks _unitOfWorks;
+        private IUnitOfWork _unitOfWorks;
 
-        public CreateUserController(UnitOfWorks unitOfWorks)
+        public CreateUserController(IUnitOfWork unitOfWorks)
         {
             _unitOfWorks = unitOfWorks;
         }
+
         [HttpPost]
-        public async Task<bool?> CreateUserPost([FromBody] Users user)
+        public async Task CreateUser([FromBody] Users _user)
         {
-            return null;
+            await _unitOfWorks.Users.Add(_user);
+            await _unitOfWorks.Save();
         }
     }
 }

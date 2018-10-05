@@ -8,6 +8,7 @@ namespace Models
 {
     public class UserRelations
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -23,7 +24,7 @@ namespace Models
         public int GoodId { get; set; }
 
         public bool IsSent { get; set; }
-        public int Rating { get; set; }
+       
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
         public bool Deleted { get; set; }

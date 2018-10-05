@@ -2,8 +2,12 @@
 
 namespace Helpers
 {
-    public class Class1
+    public class Helper
     {
-        public int MyProperty { get; set; }
+       
+        public Helper()
+        {
+            
+        }
     }
 }
