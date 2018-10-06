@@ -17,7 +17,7 @@ $(function () {
             }, 'show').on('shown.bs.modal', function () {
                 bindFormCustom();
 
-                });
+            });
 
             bindForm(this);
         });
@@ -77,18 +77,21 @@ function handleResponse(result) {
 }
 function bindFormCustom() {
     $("#loginBtn").click(function () {
-            $("#FNameDiv").addClass("hidden");
-            $("#LNameDiv").addClass("hidden");
-            $("#loginBtn").removeClass("inactive-tab");
-            $("#regBtn").addClass("inactive-tab");
-            $("#IsLogin").val("True");
+        $("#FNameDiv").addClass("hidden");
+        $("#LNameDiv").addClass("hidden");
+        $("#loginBtn").removeClass("inactive-tab");
+        $("#regBtn").addClass("inactive-tab");
+        $("#IsLogin").val("True");
+        $("#logReg").html("Login");
     });
     $("#regBtn").click(function () {
-            $("#FNameDiv").removeClass("hidden");
-            $("#LNameDiv").removeClass("hidden");
-            $("#regBtn").removeClass("inactive-tab");
-            $("#loginBtn").addClass("inactive-tab");
-            $("#IsLogin").val("False");
+        $("#FNameDiv").removeClass("hidden");
+        $("#LNameDiv").removeClass("hidden");
+        $("#regBtn").removeClass("inactive-tab");
+        $("#loginBtn").addClass("inactive-tab");
+        $("#IsLogin").val("False");
+        $("#logReg").html("Registration");
+
     });
 }
 
@@ -97,7 +100,7 @@ $(window).scroll(function () {
 });
 $(function () {
     scrollMenu();
-})
+});
 function scrollMenu() {
     scroll_start = $(this).scrollTop();
     if (scroll_start > 300) {
