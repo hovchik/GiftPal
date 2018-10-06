@@ -39,6 +39,16 @@ namespace GiftPalServer.Controllers
             return _unitOfWorks.Users.List.FirstOrDefault(x => x.Id == Id);
         }
 
+        [HttpGet("{email}/{pass}")]
+        public Users Get(string email, string pass)
+        {
+            var user = _unitOfWorks.Users.List.FirstOrDefault(x =>
+               x.Email.ToLower() == email.ToLower() && x.Password == pass);
+            //if (user == null)
+            //    return new Users();
+            //else
+                return user;
+        }
         //[HttpPost(Name = "address")]
         //public async Task<bool> CreateShippingAddressPost([FromBody] ShippingAddress _address)
         //{

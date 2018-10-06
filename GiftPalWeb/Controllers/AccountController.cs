@@ -18,6 +18,13 @@ namespace GiftPalWeb.Controllers
 {
     public class AccountController : Controller
     {
+        private HttpClient client = new HttpClient();
+
+        public AccountController()
+        {
+            client.BaseAddress = new Uri("http://localhost:5261/");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        }
         public async Task<IActionResult> Index(int Id)
         {
             if (Id > 0)
@@ -25,8 +32,8 @@ namespace GiftPalWeb.Controllers
                 UsersModel User = null;
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://localhost:5261/");
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    // client.BaseAddress = new Uri("http://localhost:5261/");
+
                     var getUserresp = await client.GetAsync($"api/CreateUser/{Id}");
 
                     var userModel = await getUserresp.Content.ReadAsAsync<Users>();
@@ -69,15 +76,25 @@ namespace GiftPalWeb.Controllers
                     Password = model.Password,
                     BirthDay = DateTime.Now.AddYears(-20),
                 };
-                using (var client = new HttpClient())
+                if (model.IsLogin)
                 {
-                    client.BaseAddress = new Uri("http://localhost:5261/");
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var userGet = await client.GetAsync($"api/CreateUser/{model.Email}/{model.Password}");
+                    var result = await userGet.Content.ReadAsAsync<Users>();
+                    if (result == null)
+                    {
+                        return View("Error",model);
+                    }
+                    user.Id = result.Id;
+                }
+                else
+                {
                     var createdUserReq = await client.PostAsJsonAsync("api/CreateUser", user);
                     var result = await createdUserReq.Content.ReadAsAsync<int>();
 
                     user.Id = result;
+
                 }
+
                 return RedirectToAction("Index", new { Id = user.Id });
             }
             return View(model);

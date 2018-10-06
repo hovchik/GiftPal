@@ -50,7 +50,7 @@ namespace GiftPalWeb
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            
+           
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -62,6 +62,8 @@ namespace GiftPalWeb
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+           
+            //app.UseStatusCodePages();
         }
     }
 }
