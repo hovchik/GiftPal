@@ -8,14 +8,14 @@ namespace GiftPalServer.Repository
     public interface IUnitOfWork
     {
         GiftsRepository Gift { get; }
-        GoodsRepository Goods { get; }
+        //GoodsRepository Goods { get; }
         FeedbackRepository Feedback { get; }
 
-        ReceivedGoodsRepository ReceivedGoods { get; }
+        //ReceivedGoodsRepository ReceivedGoods { get; }
 
-        SentGoodsRepository SentGoods { get; }
+        ToSendRepository ToSends { get; }
         ShippingAddressRepository ShippingAddress { get; }
-        UserRelationsRepository UserRelations { get; }
+        //UserRelationsRepository UserRelations { get; }
         UserRepository Users { get; }
         Task Save();
     }

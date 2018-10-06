@@ -8,34 +8,34 @@ using Models;
 
 namespace GiftPalServer.Repository
 {
-    public class ReceivedGoodsRepository : IRepository<ReceivedGoods>
-    {
-        private GiftPalDbContext db;
+    //public class ReceivedGoodsRepository : IRepository<ReceivedGoods>
+    //{
+    //    private GiftPalDbContext db;
 
-        public ReceivedGoodsRepository(GiftPalDbContext db)
-        {
-            this.db = db;
-        }
+    //    public ReceivedGoodsRepository(GiftPalDbContext db)
+    //    {
+    //        this.db = db;
+    //    }
 
-        public IEnumerable<ReceivedGoods> List => db.ReceivedGoods;
-        public async Task Add(ReceivedGoods entity)
-        {
-           await db.ReceivedGoods.AddAsync(entity);
-        }
+    //    public IEnumerable<ReceivedGoods> List => db.ReceivedGoods;
+    //    public async Task Add(ReceivedGoods entity)
+    //    {
+    //       await db.ReceivedGoods.AddAsync(entity);
+    //    }
 
-        public void Delete(ReceivedGoods entity)
-        {
-            db.ReceivedGoods.Remove(entity);
-        }
+    //    public void Delete(ReceivedGoods entity)
+    //    {
+    //        db.ReceivedGoods.Remove(entity);
+    //    }
 
-        public void Update(ReceivedGoods entity)
-        {
-            db.Entry(entity).State = EntityState.Modified;
-        }
+    //    public void Update(ReceivedGoods entity)
+    //    {
+    //        db.Entry(entity).State = EntityState.Modified;
+    //    }
 
-        public async Task<ReceivedGoods> FindById(int Id)
-        {
-            return await db.ReceivedGoods.FindAsync(Id);
-        }
-    }
+    //    public async Task<ReceivedGoods> FindById(int Id)
+    //    {
+    //        return await db.ReceivedGoods.FindAsync(Id);
+    //    }
+    //}
 }

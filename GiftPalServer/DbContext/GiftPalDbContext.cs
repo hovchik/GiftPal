@@ -9,7 +9,7 @@ using Models;
 
 namespace GiftPalServer.DbContext
 {
-    public class GiftPalDbContext:Microsoft.EntityFrameworkCore.DbContext
+    public class GiftPalDbContext : Microsoft.EntityFrameworkCore.DbContext
     {
         public GiftPalDbContext()
         {
@@ -38,16 +38,16 @@ namespace GiftPalServer.DbContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
         public virtual DbSet<Gifts> Gifts { get; set; }
         public virtual DbSet<Feedbacks> Feedbacks { get; set; }
-        public virtual DbSet<Goods> Goods{ get; set; }
-        public virtual DbSet<ReceivedGoods> ReceivedGoods { get; set; }
-        public virtual DbSet<SentGoods> SentGoods { get; set; }
+        public virtual DbSet<ToSend> ToSends { get; set; }
+        //public virtual DbSet<ReceivedGoods> ReceivedGoods { get; set; }
+        // public virtual DbSet<SentGoods> SentGoods { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<UserRelations> UserRelations { get; set; }
+        // public virtual DbSet<UserRelations> UserRelations { get; set; }
         public virtual DbSet<ShippingAddress> ShippingAddresses { get; set; }
 
     }

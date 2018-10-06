@@ -13,7 +13,8 @@ namespace Models
 
         public string ImageUrl { get; set; }
 
-        public ICollection<ReceivedGoods> ReceivedGoods { get; set; }
-        public ICollection<SentGoods> SentGoods { get; set; }
+        public bool? IsSend { get; set; }
+        public bool? IsReceived { get; set; }
+        
     }
 }
