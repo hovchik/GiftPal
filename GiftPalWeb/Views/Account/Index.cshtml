@@ -3,10 +3,15 @@
     ViewData["Title"] = "Account Info";
 }
 
-<div class="col-md-12">
-    <label asp-for="FirstName"></label>
-    <label asp-for="LastName"></label>
-</div> 
-<div class="col-lg-12">
-    <label asp-for="Email"></label>
+<div class="container  pt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <label asp-for="FirstName">@Model.FirstName</label>
+            <label asp-for="LastName">@Model.LastName</label>
+        </div>
+        <div class="col-lg-12">
+            <label asp-for="Email">@Model.Email</label>
+        </div>
+    </div>
 </div>
+
