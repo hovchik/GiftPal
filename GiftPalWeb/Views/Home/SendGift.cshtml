@@ -1,7 +1,84 @@
 ﻿
 @{
-    ViewData["Title"] = "SendGift";
+    ViewData["Title"] = "Send Gift";
 }
 
-<h2>SendGift</h2>
+<img src="~/images/3.jpg" class="img-responsive" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="background-color:#ffffff;margin-top:-140px;border-radius:50px;padding:50px;box-shadow:rgba(0,0,0,0.2) 1px 1px inset">
+                <div class="row  box1" id="1">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h3 style="padding-bottom:10px;">Sign up</h3>
+                        <input required placeholder="First Name" class="form-control" /><br />
+                        <input required placeholder="Last Name" class="form-control" /><br />
+                        <input required placeholder="Email" type="email" class="form-control" /><br />
+                        <input required placeholder="Password" type="password" class="form-control" /><br />
+                        <button type="submit" class="btn btn-default btn-login" onclick="next(1)">Next</button>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+                <div class="row  box2" hidden id="2">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h3 style="padding-bottom:10px;">Address information</h3>
+                        <input placeholder="Address 1" class="form-control" /><br />
+                        <input placeholder="Address 2" class="form-control" /><br />
+                        <input placeholder="State" class="form-control" /><br />
+                        <input placeholder="City" class="form-control" /><br />
+                        <input placeholder="Country" class="form-control" /><br />
+                        <input placeholder="Zip" class="form-control" /><br />
+                        <button class="btn btn-default btn-login" onclick="next(2)">Next</button>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+                <div class="row  box3" hidden id="3">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h3 style="padding-bottom:10px;">Gift Price</h3>
+                        <input placeholder="Price" type="number" min="5" class="form-control" /><br />
+                        <button class="btn btn-default btn-login" onclick="next(3)">Next</button>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="row  box4" hidden id="4">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h3 style="padding-bottom:10px;">PayPal Account</h3>
+                        <input placeholder="Username" class="form-control" /><br />
+                        <input placeholder="Password" class="form-control" /><br />
+                        <button class="btn btn-default btn-login" onclick="next(4)">Send</button>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="row  box5" hidden id="5">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 text-center">
+                        <h3 style="padding-bottom:10px;">Thank you!</h3>
+                        <img src="~/images/giphyHappy.gif" class="img-responsive" />
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+@section scripts{
+    <script>
+        function next(id) {
+            if ($("#" + id + ":input").val() === "") {
+                return false;
+            } else {
+                $(".box" + id).fadeOut("slow");
+                var nextid = id + 1;
+                $(".box" + nextid).fadeIn("slow");
+            }
+        }
+    </script>
+}

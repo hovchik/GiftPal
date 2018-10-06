@@ -91,3 +91,18 @@ function bindFormCustom() {
             $("#IsLogin").val("False");
     });
 }
+
+$(window).scroll(function () {
+    scrollMenu();
+});
+$(function () {
+    scrollMenu();
+})
+function scrollMenu() {
+    scroll_start = $(this).scrollTop();
+    if (scroll_start > 300) {
+        $('#mainNav').removeClass('bg-transparent').addClass('bg-white');
+    } else {
+        $('#mainNav').removeClass('bg-white').addClass('bg-transparent');
+    }
+}

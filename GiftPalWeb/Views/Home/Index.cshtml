@@ -89,7 +89,7 @@
     <div class="row pt-5">
         <div class="col-md-12" style="padding-bottom:40px;">
             <h1 class="text-center" style="color:rgba(171, 5, 53, 1);">
-                Our partners
+                Happy customers
             </h1>
         </div>
         <div class="col-md-3"></div>
@@ -110,22 +110,3 @@
 
     </div>
 </div>
-
-@section scripts{
-    <script>
-        $(window).scroll(function () {
-            scrollMenu(); 
-        });
-        $(function () {
-            scrollMenu();
-        })
-        function scrollMenu() {
-            scroll_start = $(this).scrollTop();
-            if (scroll_start > 300) {
-                $('#mainNav').removeClass('bg-transparent').addClass('bg-white');
-            } else {
-                $('#mainNav').removeClass('bg-white').addClass('bg-transparent');
-            }
-        }
-    </script>
-}
