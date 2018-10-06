@@ -59,7 +59,7 @@ namespace GiftPalServer
             });
             app.UseHttpsRedirection();
             app.UseMvc();
-            app.UseSignalR(opt => opt.MapHub<NotificationHub>("notificationHub"));
+            app.UseSignalR(opt => opt.MapHub<NotificationHub>("/notificationHub"));
         }
     }
 }

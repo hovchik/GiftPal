@@ -39,16 +39,16 @@ namespace GiftPalServer.Controllers
             return _unitOfWorks.Users.List.FirstOrDefault(x => x.Id == Id);
         }
 
-        [HttpPost]
-        public async Task<bool> CreateShippingAddressPost([FromBody] ShippingAddress _address)
-        {
-            if (_unitOfWorks.ShippingAddress.List.Any(ad => ad.UserId == _address.UserId))
-            {
-                return false;
-            }
-            await _unitOfWorks.ShippingAddress.Add(_address);
-            await _unitOfWorks.Save();
-            return true;
-        }
+        //[HttpPost(Name = "address")]
+        //public async Task<bool> CreateShippingAddressPost([FromBody] ShippingAddress _address)
+        //{
+        //    if (_unitOfWorks.ShippingAddress.List.Any(ad => ad.UserId == _address.UserId))
+        //    {
+        //        return false;
+        //    }
+        //    await _unitOfWorks.ShippingAddress.Add(_address);
+        //    await _unitOfWorks.Save();
+        //    return true;
+        //}
     }
 }
