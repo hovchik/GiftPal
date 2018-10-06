@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <link href="https://fonts.googleapis.com/css?family=K2D:300,400,600" rel="stylesheet">
     <link rel="icon" href="~/favicon.ico">
@@ -43,7 +43,7 @@
                     }
                     else
                     {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Index" asp-route-isLogin="false" class="modalform">My Account <span class="badge badge-warning">2</span></a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Index">My Account <span class="badge badge-warning">2</span></a></li>
                     }
                 </ul>
             </div>
@@ -78,7 +78,7 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.js"></script>
     </environment>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
     @RenderSection("Scripts", required: false)
