@@ -38,7 +38,8 @@ namespace GiftPalServer.Processing
             {
                 DestinationId = sendTo.Id,
                 SourceId = userId,
-                GiftId = choosenGift.Id
+                GiftId = choosenGift.Id,
+                IsSending = true
             };
             //UserRelations _relation = new UserRelations
             //{

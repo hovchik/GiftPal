@@ -13,5 +13,6 @@ namespace Models
         public int DestinationId { get; set; }
         public Users Source { get; set; }
         public Users Destination { get; set; }
+        public bool IsSending { get; set; }
     }
 }
