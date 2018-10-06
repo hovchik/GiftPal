@@ -30,31 +30,29 @@ namespace GiftPalWeb.Controllers
             if (Id > 0)
             {
                 UsersModel User = null;
-                using (var client = new HttpClient())
+                // client.BaseAddress = new Uri("http://localhost:5261/");
+
+                var getUserresp = await client.GetAsync($"api/CreateUser/{Id}");
+
+                var userModel = await getUserresp.Content.ReadAsAsync<Users>();
+                if (userModel != null)
                 {
-                    // client.BaseAddress = new Uri("http://localhost:5261/");
+                    User = new UsersModel();
+                    User.Id = userModel.Id;
+                    User.FirstName = userModel.FirstName;
+                    User.LastName = userModel.LastName;
+                    User.Email = userModel.Email;
+                    User.IsLogin = true;
+                    ViewBag.User = true;
+                    //Add to Session
 
-                    var getUserresp = await client.GetAsync($"api/CreateUser/{Id}");
-
-                    var userModel = await getUserresp.Content.ReadAsAsync<Users>();
-                    if (userModel != null)
-                    {
-                        User = new UsersModel();
-                        User.Id = userModel.Id;
-                        User.FirstName = userModel.FirstName;
-                        User.LastName = userModel.LastName;
-                        User.Email = userModel.Email;
-                        User.IsLogin = true;
-                        ViewBag.User = true;
-                        //Add to Session
-
-                        return View(User);
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                    return View(User);
                 }
+                else
+                {
+                    return null;
+                }
+
             }
             return null;
         }
@@ -82,7 +80,7 @@ namespace GiftPalWeb.Controllers
                     var result = await userGet.Content.ReadAsAsync<Users>();
                     if (result == null)
                     {
-                        return View("Error",model);
+                        return View("Error", model);
                     }
                     user.Id = result.Id;
                 }
