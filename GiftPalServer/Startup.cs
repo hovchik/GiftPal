@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GiftPalServer.DbContext;
+using GiftPalServer.Hubs;
 using GiftPalServer.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,7 @@ namespace GiftPalServer
             services.AddDbContext<GiftPalDbContext>(options => options.UseSqlServer(connection));
             services.AddSwagger();
             services.AddTransient<IUnitOfWork, UnitOfWorks>();
+            services.AddSignalR();
 
         }
 
@@ -57,7 +59,7 @@ namespace GiftPalServer
             });
             app.UseHttpsRedirection();
             app.UseMvc();
-
+            app.UseSignalR(opt => opt.MapHub<NotificationHub>("notificationHub"));
         }
     }
 }
