@@ -82,7 +82,7 @@ namespace GiftPalWeb.Controllers
                     var result = await userGet.Content.ReadAsAsync<Users>();
                     if (result == null)
                     {
-                        return new StatusCodeResult(404);
+                        return View("Error",model);
                     }
                     user.Id = result.Id;
                 }
