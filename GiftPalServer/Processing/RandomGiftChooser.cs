@@ -26,9 +26,6 @@ namespace GiftPalServer.Processing
             Random r = new Random();
             int index = r.Next(0, someGift.Count - 1);
             var choosenGift = someGift[index];
-            //var allPossibleReceivers = from good in _unitOfWorks.Goods.List
-            //                           where good.UserId != userId
-            //                           select good;
             var sendTo = (from us in _unitOfWorks.Users.List
                           where !us.Deleted && us.Id != userId
                           select us).OrderByDescending(x => x.Rating).FirstOrDefault();
@@ -41,24 +38,11 @@ namespace GiftPalServer.Processing
                 GiftId = choosenGift.Id,
                 IsSending = true
             };
-            //UserRelations _relation = new UserRelations
-            //{
-            //    Created = DateTime.Now,
-            //    Deleted = false,
-            //    DestinationId = sendTo.Id,
-            //    SourceId = userId,
-            //    IsSent = true,
-            //    Good = new Goods
-            //    {
-            //        SentGoods = new SentGoods
-            //        {
-            //            Gift = choosenGift,
-            //            IsSent = true
-            //        }
-            //    }
-            //};
+           
             await _unitOfWorks.ToSends.Add(sentobj);
 
         }
+
+
     }
 }
