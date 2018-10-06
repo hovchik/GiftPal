@@ -21,9 +21,9 @@ namespace GiftPalServer.Controllers
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<Users> Get()
+        public string Get()
         {
-            return _unitOfWorks.Users.List;
+            return "Welcome to GiftPal";
         }
 
         // GET api/values/5
