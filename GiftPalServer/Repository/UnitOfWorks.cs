@@ -13,11 +13,11 @@ namespace GiftPalServer.Repository
         private UserRepository _bookRepository;
         private GiftsRepository _giftsRepository;
         private FeedbackRepository _feedbackRepository;
-        private GoodsRepository _goodsRepository;
-        private ReceivedGoodsRepository _receivedGoodsRepository;
-        private SentGoodsRepository _sentGoodsRepository;
+        private ToSendRepository ToSendRepository;
+        //private ReceivedGoodsRepository _receivedGoodsRepository;
+        //private SentGoodsRepository _sentGoodsRepository;
         private ShippingAddressRepository _shippingAddressRepository;
-        private UserRelationsRepository _userRelationsRepository;
+        //private UserRelationsRepository _userRelationsRepository;
 
         public GiftsRepository Gift
         {
@@ -29,13 +29,13 @@ namespace GiftPalServer.Repository
 
             }
         }
-        public GoodsRepository Goods
+        public ToSendRepository ToSends
         {
             get
             {
-                if (_goodsRepository == null)
-                    _goodsRepository = new GoodsRepository(db);
-                return _goodsRepository;
+                if (ToSendRepository == null)
+                    ToSendRepository = new ToSendRepository(db);
+                return ToSendRepository;
             }
         }
         public FeedbackRepository Feedback
@@ -47,24 +47,24 @@ namespace GiftPalServer.Repository
                 return _feedbackRepository;
             }
         }
-        public ReceivedGoodsRepository ReceivedGoods
-        {
-            get
-            {
-                if (_receivedGoodsRepository == null)
-                    _receivedGoodsRepository = new ReceivedGoodsRepository(db);
-                return _receivedGoodsRepository;
-            }
-        }
-        public SentGoodsRepository SentGoods
-        {
-            get
-            {
-                if (_sentGoodsRepository == null)
-                    _sentGoodsRepository = new SentGoodsRepository(db);
-                return _sentGoodsRepository;
-            }
-        }
+        //public ReceivedGoodsRepository ReceivedGoods
+        //{
+        //    get
+        //    {
+        //        if (_receivedGoodsRepository == null)
+        //            _receivedGoodsRepository = new ReceivedGoodsRepository(db);
+        //        return _receivedGoodsRepository;
+        //    }
+        //}
+        //public SentGoodsRepository SentGoods
+        //{
+        //    get
+        //    {
+        //        if (_sentGoodsRepository == null)
+        //            _sentGoodsRepository = new SentGoodsRepository(db);
+        //        return _sentGoodsRepository;
+        //    }
+        //}
         public ShippingAddressRepository ShippingAddress
         {
             get
@@ -74,15 +74,15 @@ namespace GiftPalServer.Repository
                 return _shippingAddressRepository;
             }
         }
-        public UserRelationsRepository UserRelations
-        {
-            get
-            {
-                if (_userRelationsRepository == null)
-                    _userRelationsRepository = new UserRelationsRepository(db);
-                return _userRelationsRepository;
-            }
-        }
+        //public UserRelationsRepository UserRelations
+        //{
+        //    get
+        //    {
+        //        if (_userRelationsRepository == null)
+        //            _userRelationsRepository = new UserRelationsRepository(db);
+        //        return _userRelationsRepository;
+        //    }
+        //}
 
 
         public UserRepository Users

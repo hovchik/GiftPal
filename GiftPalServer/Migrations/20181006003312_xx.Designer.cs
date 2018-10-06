@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GiftPalServer.Migrations
 {
     [DbContext(typeof(GiftPalDbContext))]
-    [Migration("20181005210530_migrations")]
-    partial class migrations
+    [Migration("20181006003312_xx")]
+    partial class xx
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,6 +55,10 @@ namespace GiftPalServer.Migrations
 
                     b.Property<string>("ImageUrl");
 
+                    b.Property<bool?>("IsReceived");
+
+                    b.Property<bool?>("IsSend");
+
                     b.Property<decimal>("Price");
 
                     b.Property<string>("Url");
@@ -62,79 +66,6 @@ namespace GiftPalServer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Gifts");
-                });
-
-            modelBuilder.Entity("Models.Goods", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ReceivedGoodsId");
-
-                    b.Property<int?>("SentGoodsId");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReceivedGoodsId");
-
-                    b.HasIndex("SentGoodsId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Goods");
-                });
-
-            modelBuilder.Entity("Models.ReceivedGoods", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Created");
-
-                    b.Property<bool>("Deleted");
-
-                    b.Property<int>("GiftId");
-
-                    b.Property<int?>("GiftsId");
-
-                    b.Property<bool>("IsReceived");
-
-                    b.Property<bool>("OnTheWay");
-
-                    b.Property<DateTime>("Updated");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GiftsId");
-
-                    b.ToTable("ReceivedGoods");
-                });
-
-            modelBuilder.Entity("Models.SentGoods", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Created");
-
-                    b.Property<bool>("Deleted");
-
-                    b.Property<int>("GiftId");
-
-                    b.Property<bool>("IsSent");
-
-                    b.Property<DateTime>("Updated");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GiftId");
-
-                    b.ToTable("SentGoods");
                 });
 
             modelBuilder.Entity("Models.ShippingAddress", b =>
@@ -175,35 +106,27 @@ namespace GiftPalServer.Migrations
                     b.ToTable("ShippingAddresses");
                 });
 
-            modelBuilder.Entity("Models.UserRelations", b =>
+            modelBuilder.Entity("Models.ToSend", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Created");
-
-                    b.Property<bool>("Deleted");
-
                     b.Property<int>("DestinationId");
 
-                    b.Property<int>("GoodId");
-
-                    b.Property<bool>("IsSent");
+                    b.Property<int>("GiftId");
 
                     b.Property<int>("SourceId");
-
-                    b.Property<DateTime>("Updated");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DestinationId");
 
-                    b.HasIndex("GoodId");
+                    b.HasIndex("GiftId");
 
                     b.HasIndex("SourceId");
 
-                    b.ToTable("UserRelations");
+                    b.ToTable("ToSends");
                 });
 
             modelBuilder.Entity("Models.Users", b =>
@@ -247,37 +170,6 @@ namespace GiftPalServer.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Models.Goods", b =>
-                {
-                    b.HasOne("Models.ReceivedGoods", "ReceivedGoods")
-                        .WithMany()
-                        .HasForeignKey("ReceivedGoodsId");
-
-                    b.HasOne("Models.SentGoods", "SentGoods")
-                        .WithMany()
-                        .HasForeignKey("SentGoodsId");
-
-                    b.HasOne("Models.Users", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Models.ReceivedGoods", b =>
-                {
-                    b.HasOne("Models.Gifts", "Gifts")
-                        .WithMany("ReceivedGoods")
-                        .HasForeignKey("GiftsId");
-                });
-
-            modelBuilder.Entity("Models.SentGoods", b =>
-                {
-                    b.HasOne("Models.Gifts", "Gift")
-                        .WithMany("SentGoods")
-                        .HasForeignKey("GiftId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Models.ShippingAddress", b =>
                 {
                     b.HasOne("Models.Users", "User")
@@ -286,16 +178,16 @@ namespace GiftPalServer.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Models.UserRelations", b =>
+            modelBuilder.Entity("Models.ToSend", b =>
                 {
                     b.HasOne("Models.Users", "Destination")
                         .WithMany()
                         .HasForeignKey("DestinationId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Models.Goods", "Good")
-                        .WithMany("UserRelationses")
-                        .HasForeignKey("GoodId")
+                    b.HasOne("Models.Gifts", "Gift")
+                        .WithMany()
+                        .HasForeignKey("GiftId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Models.Users", "Source")

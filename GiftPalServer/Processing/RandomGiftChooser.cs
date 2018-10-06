@@ -24,24 +24,39 @@ namespace GiftPalServer.Processing
                             where gift.Price <= actualPrice
                             select gift).ToList();
             Random r = new Random();
-            int index = r.Next(0, someGift.Count-1);
+            int index = r.Next(0, someGift.Count - 1);
             var choosenGift = someGift[index];
             //var allPossibleReceivers = from good in _unitOfWorks.Goods.List
             //                           where good.UserId != userId
             //                           select good;
             var sendTo = (from us in _unitOfWorks.Users.List
-                           where !us.Deleted && us.Id != userId
-                           select us).OrderByDescending(x=>x.Rating).FirstOrDefault();
+                          where !us.Deleted && us.Id != userId
+                          select us).OrderByDescending(x => x.Rating).FirstOrDefault();
 
-            UserRelations _relation = new UserRelations
+
+            ToSend sentobj = new ToSend
             {
-                Created = DateTime.Now,
-                Deleted = false,
                 DestinationId = sendTo.Id,
                 SourceId = userId,
-                IsSent = true
+                GiftId = choosenGift.Id
             };
-            await _unitOfWorks.UserRelations.Add(_relation);
+            //UserRelations _relation = new UserRelations
+            //{
+            //    Created = DateTime.Now,
+            //    Deleted = false,
+            //    DestinationId = sendTo.Id,
+            //    SourceId = userId,
+            //    IsSent = true,
+            //    Good = new Goods
+            //    {
+            //        SentGoods = new SentGoods
+            //        {
+            //            Gift = choosenGift,
+            //            IsSent = true
+            //        }
+            //    }
+            //};
+            await _unitOfWorks.ToSends.Add(sentobj);
 
         }
     }

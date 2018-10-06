@@ -18,15 +18,38 @@ namespace GiftPalWeb.Controllers
 {
     public class AccountController : Controller
     {
-        //private readonly ISessionManager _sessionManager;
-        //public AccountController(ISessionManager sessionManager)
-        //{
-        //    _sessionManager = sessionManager;
-        //}
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int Id)
         {
+            if (Id > 0)
+            {
+                UsersModel User = null;
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:5261/");
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var getUserresp = await client.GetAsync($"api/CreateUser/{Id}");
 
-            return View();
+                    var userModel = await getUserresp.Content.ReadAsAsync<Users>();
+                    if (userModel != null)
+                    {
+                        User = new UsersModel();
+                        User.Id = userModel.Id;
+                        User.FirstName = userModel.FirstName;
+                        User.LastName = userModel.LastName;
+                        User.Email = userModel.Email;
+                        User.IsLogin = true;
+
+                        //Add to Session
+
+                        return View(User);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            return null;
         }
         public async Task<IActionResult> Login(bool isLogin)
         {
@@ -52,11 +75,12 @@ namespace GiftPalWeb.Controllers
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     var createdUserReq = await client.PostAsJsonAsync("api/CreateUser", user);
                     var result = await createdUserReq.Content.ReadAsAsync<int>();
+
+                    user.Id = result;
                 }
-                //_sessionManager.User = model;
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { Id = user.Id });
             }
-            return View("_Login",model);
+            return View(model);
         }
     }
 }
