@@ -1,0 +1,9 @@
+﻿@model UsersModel
+<form asp-action="Register" asp-controller="Account" id="box1">
+    <input asp-for="IsLogin" value="false" hidden />
+    <input asp-for="FirstName" required placeholder="First Name" class="form-control" /><br />
+    <input asp-for="LastName" required placeholder="Last Name" class="form-control" /><br />
+    <input asp-for="Email" required placeholder="Email" type="email" class="form-control" /><br />
+    <input asp-for="Password" required placeholder="Password" type="password" class="form-control" /><br />
+    <button type="button" class="btn btn-default btn-login" onclick="next(1)">Next</button>
+</form>

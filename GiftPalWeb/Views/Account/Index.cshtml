@@ -5,6 +5,9 @@
 
 <div class="container  pt-5">
     <div class="row">
+        <div class="col-md-3">
+            <img src="~/images/c3.jpg" class="img-circle"/>
+        </div>
         <div class="col-md-12">
             <label asp-for="FirstName">@Model.FirstName</label>
             <label asp-for="LastName">@Model.LastName</label>
@@ -13,5 +16,21 @@
             <label asp-for="Email">@Model.Email</label>
         </div>
     </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Gift</th>
+                <th>Form</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="~/images/Icon.png" /></td>
+                <td>Anonymous</td>
+                <td>Happy birthday to you</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 

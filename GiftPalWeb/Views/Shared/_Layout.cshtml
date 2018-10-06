@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - GiftPalWeb</title>
+    <title>@ViewData["Title"] | GiftPal</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -36,8 +36,15 @@
             <div class="navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Login" asp-route-isLogin="true" class="modalform">Sign In</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Login" asp-route-isLogin="false" class="modalform">Join</a></li>
+                    @if (ViewBag.User == null)
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login" asp-route-isLogin="true" class="modalform">Sign In</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login" asp-route-isLogin="false" class="modalform">Join</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="Index" asp-route-isLogin="false" class="modalform">My Account <span class="badge badge-warning">2</span></a></li>
+                    }
                 </ul>
             </div>
         </div>
@@ -73,7 +80,7 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
