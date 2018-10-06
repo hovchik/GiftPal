@@ -45,7 +45,7 @@ namespace GiftPalWeb.Controllers
                         User.LastName = userModel.LastName;
                         User.Email = userModel.Email;
                         User.IsLogin = true;
-
+                        ViewBag.User = true;
                         //Add to Session
 
                         return View(User);

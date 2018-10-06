@@ -2,8 +2,9 @@
 @{
     ViewData["Title"] = "Send Gift";
 }
-
-<img src="~/images/3.jpg" class="img-responsive" />
+<div style="background-image: url('../images/3.jpg'); height:500px;width:100%;background-position:center center;">
+    <img src="~/images/downarrow4.gif" style="text-align:center;margin:0 auto ;display:inline-block; height:50px; width:50px; margin-top:-300px" />
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -12,11 +13,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <h3 style="padding-bottom:10px;">Sign up</h3>
-                        <input required placeholder="First Name" class="form-control" /><br />
-                        <input required placeholder="Last Name" class="form-control" /><br />
-                        <input required placeholder="Email" type="email" class="form-control" /><br />
-                        <input required placeholder="Password" type="password" class="form-control" /><br />
-                        <button type="submit" class="btn btn-default btn-login" onclick="next(1)">Next</button>
+                         @await Html.PartialAsync("_Register")
                     </div>
                     <div class="col-md-4"></div>
                 </div>
