@@ -6,6 +6,7 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
+using GiftPalWeb.Helper;
 using GiftPalWeb.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -17,6 +18,11 @@ namespace GiftPalWeb.Controllers
 {
     public class AccountController : Controller
     {
+        //private readonly ISessionManager _sessionManager;
+        //public AccountController(ISessionManager sessionManager)
+        //{
+        //    _sessionManager = sessionManager;
+        //}
         public async Task<IActionResult> Index()
         {
 
@@ -47,9 +53,10 @@ namespace GiftPalWeb.Controllers
                     var createdUserReq = await client.PostAsJsonAsync("api/CreateUser", user);
                     var result = await createdUserReq.Content.ReadAsAsync<int>();
                 }
+                //_sessionManager.User = model;
                 return RedirectToAction("Index");
             }
-            return View(model);
+            return View("_Login",model);
         }
     }
 }

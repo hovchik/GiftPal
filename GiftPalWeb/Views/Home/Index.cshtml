@@ -5,12 +5,15 @@
 
 <div id="videoDiv">
     <div id="videoBlock">
-        <video id="myVideo" autoplay muted loop>
+        <img src="~/images/giphy.gif" id="myVideo" />
+        @*<video id="myVideo" autoplay muted loop>
             <source src="~/images/rain.mp4" type="video/mp4" />
-        </video>
+        </video>*@
         <div id="videoMessageBox">
             <div id="videoMessage" class="text-center">
-                <h2>Feel the magic of the GIFT!</h2>
+                <h1>Feel the magic of the GIFT!</h1>
+                <div style="padding-top:20px"></div>
+                <a href="@Url.Action("SendGift","Home")" class="btn btn-default btn-login">Send Gift</a>
             </div>
         </div>
     </div>
@@ -22,34 +25,34 @@
         <div class="col-md-1"></div>
         <div class="col-md-5 pr-0">
             <h1 class="text-center" style="color:#3080ba;padding-bottom:10px;">
-                Swap a<br /> parcel
+                
             </h1>
             <img src="~/images/1.jpeg" class="img-responsive" />
         </div>
         <div class="col-md-5 mlN-40 bg-1">
             <div class="p-5">
                 <h2 style="padding-bottom:10px">
-                    Join parcel-swapping!
+                    Give as much as you can and as often as you can.
                 </h2>
-                <p style="font-size:20px;">Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei. Id qui nemore latine molestiae, ad mutat oblique delicatissimi pro.</p>
+                <p style="font-size:20px;">The act of giving is physically, mentally and emotionally beneficial. Giving gifts is a universal way to show interest and strengthen relations with others and of course with GiftPal it’s a way to connect with PALs!</p>
             </div>
         </div>
     </div>
     <div class="row  pt-5">
         <div class="col-md-1"></div>
-        <div class="col-md-5  pr-0 bg-2">
+        <div class="col-md-6  pr-0 bg-2">
             <div class="p-5">
                 <h2 style="padding-bottom:10px">
-                    Join parcel-swapping!
+                    P-P-P-P-P-Pick up a gift and surprise your gift pal.
                 </h2>
-                <p style="font-size:20px;">Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei. Id qui nemore latine molestiae, ad mutat oblique delicatissimi pro.</p>
+                <p style="font-size:20px;">Giving makes us feel happy and it’s good for our health as it decreases stress which is the reason behind a variety of health problems. When you give, you’re more likely to get back. Your generosity is likely to be rewarded by others – sometimes by the person you gave to, sometimes by someone else.</p>
             </div>
         </div>
         <div class="col-md-5 mlN-40 ">
-            <h1 class="text-center" style="color:rgba(171, 5, 53, 1);padding-bottom:10px;">
-                Swap a<br /> parcel
+            <h1 class="text-center" style="color:rgba(171, 5, 53, 1);padding-bottom:30px;">
+                @*Swap a<br /> parcel*@
             </h1>
-            <img src="~/images/2.jpeg" class="img-responsive" />
+            <img src="~/images/2.jpg" class="img-responsive" />
         </div>
     </div>
     <div class="row pt-5">
@@ -60,7 +63,8 @@
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-8 text-center" style="padding-top:20px;font-size:16px; line-height:22px;">
-            In the confirmation e-mail you'll find a link for a donation of minimum 2 € to take part.   I'll donate everything to UNHCR for the refugees, to CRI - Italian Red Cross and to MSF - Médecins sans frontières. In this way we can make together another great gift to a stranger in need. Once I made the donations (before this Christmas), you receive the receipt by email.
+            Sign up and fill in your preferences and hit the send gift button. Let us know how much you want to spend on your gift. Insert your payment information and send your gift.
+           <br /> We’ll send you all the information, your match and some ideas and suggestions to your email.
         </div>
     </div>
     <div class="row pt-5">
@@ -69,20 +73,40 @@
                 Our partners
             </h1>
         </div>
-        <div class="col-md-2"></div>
-        <div class="col-md-2">
-            <img src="~/images/AliExpress.png" class="img-responsive"/>
-        </div>
+        <div class="col-md-3"></div>
         <div class="col-md-2" style="padding-top:40px;">
             <img src="~/images/amazon.jpg"class="img-responsive" />
         </div>
         <div class="col-md-2">
-            <img src="~/images/AliExpress.png"class="img-responsive" />
+            <img src="~/images/AliExpress.png" class="img-responsive"/>
         </div>
-        <div class="col-md-2" style="padding-top:40px;">
-            <img src="~/images/amazon.jpg" class="img-responsive"/>
+        <div class="col-md-2" style="padding-top:25px;">
+            <img src="~/images/EBay.png"class="img-responsive" />
         </div>
         <div class="col-md-2"></div>
+
+    </div>
+    <div class="row pt-5">
+        <div class="col-md-12" style="padding-bottom:40px;">
+            <h1 class="text-center" style="color:rgba(171, 5, 53, 1);">
+                Our partners
+            </h1>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-2 text-center">
+            <img src="~/images/c1.jpg" class="img-circle" style="max-width:100px;" />
+            <p style="padding-top:20px;">
+                -    Gifttastic website! Thank you.
+            </p>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2 text-center">
+            <img src="~/images/c2.jpg" class="img-circle" style="max-width:100px;" />
+            <p style="padding-top:20px;">
+                -    GiftPal is the best now I can forget the rest.
+            </p>
+        </div>
+        <div class="col-md-3"></div>
 
     </div>
 </div>
